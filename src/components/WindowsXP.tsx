@@ -59,10 +59,11 @@ export default function WindowsXP() {
               >
                 <div className="flex items-center">
                   <img
-                    src={"/placeholder.svg?height=16&width=16"}
-                    alt="Paint icon"
-                    className="mr-2 h-4 w-4"
+                    src={`/img/icons/${window.id}.png`}
+                    alt="icon"
+                    className="mr-1 h-4 w-4 ml-1"
                   />
+
                   <span className="font-bold text-sm">{window.title}</span>
                 </div>
 
@@ -128,7 +129,7 @@ export default function WindowsXP() {
                 onClick={() => activateWindow(window.id)}
               >
                 <img
-                  src={"/placeholder.svg?height=16&width=16"}
+                  src={`/img/icons/${window.id}.png`}
                   alt="Paint icon"
                   className="mr-2 h-4 w-4"
                 />
