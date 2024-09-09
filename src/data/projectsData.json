@@ -1,0 +1,41 @@
+[
+	{
+		"title": "Fordham PD",
+		"image": "img/projects/proj1.png",
+		"description": "Fordham People Watcher (naming is not my strongest skill) is a device that detects the capacity of a room using a Raspberry Pi and multiple detectors like motion, humidity, and temperature. The readings are then posted to a website that students can use.",
+		"technologies": [
+			"Hardware",
+			"Raspberry Pi",
+			"C++"
+		]
+	},
+	{
+		"title": "D.A.I.S.Y.",
+		"image": "img/projects/proj2.png",
+		"description": "Daisy was my main summer project and my first experience with AI. the name DAISY stands for Developed Artificial Intelligence Yett (Again, names not that good). It is an AI bot that answers questions. I built the Text recognition algorithm and the capability to scrape the web and find answers.",
+		"technologies": [
+			"Python",
+			"C++",
+			"Swift"
+		]
+	},
+	{
+		"title": "Fighting Robot",
+		"image": "img/projects/proj3.png",
+		"description": "I had a phase last summer where I wanted to create a fighting robot; no questions, please. This is why I made a mockup for a 3D printed fighting robot that used only 4 motors and was controlled with a controller. Sadly, the project came to an end when it fell off the table.",
+		"technologies": [
+			"Hardware",
+			"Python"
+		]
+	},
+	{
+		"title": "Portfolio Website",
+		"image": "img/projects/proj4.png",
+		"description": "This website, Ta-Da! It is built using HTML, CSS, and JS. I've created this website portfolio after long nights of figuring out text-align and how to center a div. I've deepened my knowledge of the 3 languages and Git in the process.",
+		"technologies": [
+			"HTML",
+			"CSS",
+			"JavaScript"
+		]
+	}
+]

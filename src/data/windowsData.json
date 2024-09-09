@@ -1,0 +1,58 @@
+{
+	"desktopIcons": [
+		{
+			"id": "about",
+			"title": "About Me",
+			"icon_id": "img/icons/about.png"
+		},
+		{
+			"id": "resume",
+			"title": "Resume",
+			"icon_id": "img/icons/resume.png"
+		},
+		{
+			"id": "experience",
+			"title": "Experience",
+			"icon_id": "img/icons/work.png"
+		},
+		{
+			"id": "research",
+			"title": "Research",
+			"icon_id": "img/icons/research.png"
+		},
+		{
+			"id": "projects",
+			"title": "Projects",
+			"icon_id": "img/icons/project.png"
+		},
+		{
+			"id": "snake",
+			"title": "Snake",
+			"icon_id": "img/icons/snake.png"
+		},
+		{
+			"id": "paint",
+			"title": "Paint",
+			"icon_id": "img/icons/paint.png"
+		}
+	],
+	"startMenuItems": [
+		{
+			"title": "My Profile",
+			"icon": "User"
+		},
+		{
+			"title": "Settings",
+			"icon": "Settings"
+		},
+		{
+			"title": "Help",
+			"icon": "HelpCircle"
+		},
+		{
+			"title": "Shut Down",
+			"icon": "Power",
+			"className": "text-red-600"
+		}
+	]
+}

@@ -1,0 +1,19 @@
+[
+	{
+		"professor": "Professor Mao, Fordham University",
+		"title": "Quantum Computing, Deep Learning",
+		"details": [
+			"Developed a multi-tenant quantum simulator for quantum deep learning application on a classical computer with Python and TensorFlow",
+			"Employed Qiskit APIs to analyze the workload distribution across individual qubits, gaining valuable efficiency in performance and capability which reduces development time by 3+ hours (depending on specific IBM-Q Computer)",
+			"Utilized Docker, Git, and Agile Scrum process to facilitate and accelerate the development process within the team"
+		]
+	},
+	{
+		"professor": "Professor Li, Fordham University",
+		"title": "Image Segmentation Mathematical Algorithms and Models",
+		"details": [
+			"Implemented the iterative thresholding method for image segmentation using the Chan-Vese model in MATLAB and Python; incorporated convolution operations and region-specific information to enhance accuracy and achieve a 40% reduction in false positives",
+			"Utilized the results of the operation to accurately detect objects in an image at O(N logN) complexity"
+		]
+	}
+]

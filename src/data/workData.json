@@ -1,0 +1,53 @@
+[
+	{
+		"date": "June 22 - August 22",
+		"position": "Software Engineer Intern",
+		"company": "Mobiblanc",
+		"logo": "img/work/mobiblanc.jpg",
+		"details": [
+			"Developed a modular artificial intelligence customer support bot using DialogFlow on Google Cloud, implemented on 7 webpages using HTML and JavaScript. Connected the user inquiries to two MySQL databases, one which the bot automatically uses to answer user questions, and the other to add new inquiries for the team to look at.",
+			"Decreased wait time by over 70% and reduced costs by 45%. Averaged 4700 daily interactions and 130 daily inquiries."
+		]
+	},
+	{
+		"date": "August 22 - Present",
+		"position": "Vice President",
+		"company": "Google Developer Student Club",
+		"logo": "img/work/gdsc.png",
+		"details": [
+			"Serving as VP at the Google Developers Student Club, I lead the planning and execution of initiatives, ensuring a robust and purposeful approach to our tech-focused endeavors.",
+			"From workshops to competitive coding events, I meticulously organize and execute activities, creating engaging experiences that contribute to the club's vibrant atmosphere."
+		]
+	},
+	{
+		"date": "September 21 - Present",
+		"position": "IT Specialist",
+		"company": "Fordham IT",
+		"logo": "img/work/fordham.png",
+		"details": [
+			"Part-time position at Fordham IT's help desk, in which I assist members of the Fordham community with any of their tech issues, either in person or remotely.",
+			"I've learned to troubleshoot the various problems from the different scenarios I encountered, strengthening my skills and understanding of how the backend works.",
+			"This position also required constant interactions with IT specialists, supervisors, and other employees from different departments, thus improving my communication skills."
+		]
+	},
+	{
+		"date": "September 21 - August 22",
+		"position": "Research Director",
+		"company": "Fordham Computer Science Society",
+		"logo": "img/work/css.png",
+		"details": [
+			"In 2020, I was elected Research Director of the Fordham Computer Science Society. I was in charge of most of the weekly tech events organized by the Eboard, and researching the topics discussed.",
+			"I was also in charge of keeping track of the club's inventory and leading a year-long research project."
+		]
+	},
+	{
+		"date": "June 19 - July 19",
+		"position": "Agent and Technician",
+		"company": "Moroccan Motorway Company",
+		"logo": "img/work/adm.png",
+		"details": [
+			"During the month-long internship, I maintained the hardware and software used by the agents in over 12 national agencies.",
+			"The position required constant interactions with essential clients, appeasement of delicate situations between staff and clients, and a comfortable grasp of computer troubleshooting and hardware installations."
+		]
+	}
+]
