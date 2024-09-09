@@ -51,9 +51,8 @@ export default function WindowsXP() {
   };
 
   return (
-    <div className="h-screen bg-[url('https://i.imgur.com/Zk6TR5k.jpg')] bg-cover overflow-hidden relative select-none font-[Tahoma,sans-serif] h-full">
-      {/* <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-4 p-4 content-start h-[calc(100vh-40px)] overflow-y-auto"> */}
-      <div className="grid grid-cols-2 sm:grid-cols-1 md:grid-cols-1 gap-4 p-4 content-start content-start h-[calc(100vh-40px)] overflow-y-auto h-full">
+    <div className="flex flex-col h-screen bg-[url('https://i.imgur.com/Zk6TR5k.jpg')] bg-cover overflow-hidden relative select-none font-[Tahoma,sans-serif]">
+      <div className="flex-grow overflow-y-auto p-4 grid grid-cols-2 sm:grid-cols-1 md:grid-cols-1 gap-4 content-start">
         {windowsData.desktopIcons.map((icon) => (
           <DesktopIcon
             key={icon.id}
@@ -70,7 +69,7 @@ export default function WindowsXP() {
             <div
               key={window.id}
               className={`absolute bg-gray-100 border border-gray-400 shadow-lg rounded-t-lg ${
-                isMobile ? "w-full h-[calc(100%-40px)]" : "w-[550px] h-[650px]"
+                isMobile ? "inset-0 mt-0 mb-10" : "w-[550px] h-[650px]"
               }`}
               style={{
                 left: isMobile ? 0 : window.position.x,
@@ -132,8 +131,8 @@ export default function WindowsXP() {
           )
       )}
 
-      {/* Taskbar */}
-      <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-r from-[#245EDC] to-[#3C81F3] flex items-center justify-between z-50">
+      <div className="flex-shrink-0 h-10 bg-gradient-to-r from-[#245EDC] to-[#3C81F3] flex items-center justify-between z-50">
+        {/* <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-r from-[#245EDC] to-[#3C81F3] flex items-center justify-between z-50"> */}
         <div className="flex items-center h-full overflow-x-auto">
           <button
             className="px-0 py-0 flex-shrink-0"
@@ -173,9 +172,9 @@ export default function WindowsXP() {
         </div>
       </div>
 
-      {/* Start Menu */}
       {startMenuOpen && (
         <div className="absolute bottom-10 left-0 w-full sm:w-80 bg-[#D3E5FA] border-2 border-[#0A246A] rounded-tr-lg shadow-lg overflow-hidden z-50">
+          {/* <div className="absolute bottom-10 left-0 w-full sm:w-80 bg-[#D3E5FA] border-2 border-[#0A246A] rounded-tr-lg shadow-lg overflow-hidden z-50"> */}
           <div className="bg-gradient-to-r from-[#1C3A80] to-[#3165C3] p-4 flex items-center">
             <img
               src="./img/icons/frog.jpg"
