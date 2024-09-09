@@ -18,6 +18,7 @@ export default function WindowsXP() {
   const [startMenuOpen, setStartMenuOpen] = useState(false);
   const [time, setTime] = useState(new Date());
   const [isMobile, setIsMobile] = useState(false);
+  const [maximizedWindows, setMaximizedWindows] = useState({});
 
   useEffect(() => {
     const timer = setInterval(() => setTime(new Date()), 1000);
@@ -52,6 +53,13 @@ export default function WindowsXP() {
     return window.content;
   };
 
+  const toggleMaximize = (windowId) => {
+    setMaximizedWindows((prev) => ({
+      ...prev,
+      [windowId]: !prev[windowId],
+    }));
+  };
+
   return (
     <div className="h-screen h-[calc(var(--vh,1vh)*100)] bg-[url('https://i.imgur.com/Zk6TR5k.jpg')] bg-cover overflow-hidden relative select-none font-[Tahoma,sans-serif] flex flex-col">
       <div className="flex-grow overflow-y-auto p-4 grid grid-cols-2 sm:grid-cols-1 md:grid-cols-1 gap-4 content-start">
@@ -71,18 +79,28 @@ export default function WindowsXP() {
             <div
               key={window.id}
               className={`absolute bg-gray-100 border border-gray-400 shadow-lg rounded-t-lg ${
-                isMobile ? "fixed inset-0 mt-0 mb-10" : "w-[550px] h-[650px]"
+                maximizedWindows[window.id]
+                  ? "fixed inset-0 mt-0 mb-10"
+                  : isMobile
+                  ? "fixed inset-0 mt-0 mb-10"
+                  : "w-[550px] h-[650px]"
               }`}
               style={{
-                left: isMobile ? 0 : window.position.x,
-                top: isMobile ? 0 : window.position.y,
+                left:
+                  maximizedWindows[window.id] || isMobile
+                    ? 0
+                    : window.position.x,
+                top:
+                  maximizedWindows[window.id] || isMobile
+                    ? 0
+                    : window.position.y,
                 zIndex: window.zIndex,
               }}
             >
               <div
                 className="bg-gradient-to-r from-blue-700 to-blue-500 text-white p-1 flex justify-between items-center cursor-move rounded-t"
                 onMouseDown={(e) => {
-                  if (!isMobile) {
+                  if (!isMobile && !maximizedWindows[window.id]) {
                     handleWindowDrag(e, window, moveWindow);
                   }
                   activateWindow(window.id);
@@ -107,10 +125,17 @@ export default function WindowsXP() {
                       className="h-6 w-6"
                     />
                   </button>
-                  <button className="px-1 py-0.5 hover:bg-[#1E6CEB] rounded">
+                  <button
+                    className="px-1 py-0.5 hover:bg-[#1E6CEB] rounded"
+                    onClick={() => toggleMaximize(window.id)}
+                  >
                     <img
-                      src={"/img/buttons/Maximize.png"}
-                      alt="Maximize"
+                      src={
+                        maximizedWindows[window.id]
+                          ? "/img/buttons/restore.png"
+                          : "/img/buttons/maximize.png"
+                      }
+                      alt={maximizedWindows[window.id] ? "Restore" : "Maximize"}
                       className="h-6 w-6"
                     />
                   </button>
@@ -174,8 +199,7 @@ export default function WindowsXP() {
       </div>
 
       {startMenuOpen && (
-        <div className="absolute bottom-10 left-0 w-full sm:w-80 bg-[#D3E5FA] border-2 border-[#0A246A] rounded-tr-lg shadow-lg overflow-hidden z-50">
-          {/* <div className="absolute bottom-10 left-0 w-full sm:w-80 bg-[#D3E5FA] border-2 border-[#0A246A] rounded-tr-lg shadow-lg overflow-hidden z-50"> */}
+        <div className="fixed bottom-10 left-0 w-full sm:w-80 bg-[#D3E5FA] border-2 border-[#0A246A] rounded-tr-lg shadow-lg overflow-hidden z-50">
           <div className="bg-gradient-to-r from-[#1C3A80] to-[#3165C3] p-4 flex items-center">
             <img
               src="./img/icons/frog.jpg"
