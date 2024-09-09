@@ -23,6 +23,14 @@ export default function WindowsXP() {
     return () => clearInterval(timer);
   }, []);
 
+  useEffect(() => {
+    // Add overflow-hidden to body
+    document.body.classList.add("overflow-hidden");
+    return () => {
+      document.body.classList.remove("overflow-hidden");
+    };
+  }, []);
+
   return (
     <div className="h-screen bg-[url('https://i.imgur.com/Zk6TR5k.jpg')] bg-cover overflow-hidden relative select-none font-[Tahoma,sans-serif]">
       <div className="grid grid-rows-6 gap-4 p-4">
@@ -41,7 +49,7 @@ export default function WindowsXP() {
           !window.isMinimized && (
             <div
               key={window.id}
-              className="absolute bg-gray-100 border border-gray-400 shadow-lg rounded-t-lg overflow-scroll"
+              className="absolute bg-gray-100 border border-gray-400 shadow-lg rounded-t-lg"
               style={{
                 left: `${window.position.x}px`,
                 top: `${window.position.y}px`,
@@ -51,7 +59,7 @@ export default function WindowsXP() {
               }}
             >
               <div
-                className="bg-gradient-to-r from-blue-700 to-blue-500 text-white p-1 flex justify-between items-center cursor-move"
+                className="bg-gradient-to-r from-blue-700 to-blue-500 text-white p-1 flex justify-between items-center cursor-move rounded-t"
                 onMouseDown={(e) => {
                   handleWindowDrag(e, window, moveWindow);
                   activateWindow(window.id);
