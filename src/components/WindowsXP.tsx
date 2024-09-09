@@ -113,7 +113,7 @@ export default function WindowsXP() {
             onClick={() => setStartMenuOpen(!startMenuOpen)}
           >
             <img
-              src={"img/logo.png"}
+              src={"img/icons/logo.png"}
               alt="Windows XP Logo"
               className="w-30 h-8 mr-0"
             />
