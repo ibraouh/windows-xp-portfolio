@@ -51,7 +51,7 @@ export default function WindowsXP() {
   };
 
   return (
-    <div className="h-screen bg-[url('https://i.imgur.com/Zk6TR5k.jpg')] bg-cover overflow-hidden relative select-none font-[Tahoma,sans-serif]">
+    <div className="h-screen bg-[url('https://i.imgur.com/Zk6TR5k.jpg')] bg-cover overflow-hidden relative select-none font-[Tahoma,sans-serif] h-full">
       {/* <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-4 p-4 content-start h-[calc(100vh-40px)] overflow-y-auto"> */}
       <div className="grid grid-cols-2 sm:grid-cols-1 md:grid-cols-1 gap-4 p-4 content-start h-full">
         {windowsData.desktopIcons.map((icon) => (
