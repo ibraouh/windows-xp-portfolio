@@ -26,16 +26,18 @@ export default function WindowsXP() {
     checkMobile();
     window.addEventListener("resize", checkMobile);
 
+    function setVH() {
+      let vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty("--vh", `${vh}px`);
+    }
+
+    setVH();
+    window.addEventListener("resize", setVH);
+
     return () => {
       clearInterval(timer);
       window.removeEventListener("resize", checkMobile);
-    };
-  }, []);
-
-  useEffect(() => {
-    document.body.classList.add("overflow-hidden");
-    return () => {
-      document.body.classList.remove("overflow-hidden");
+      window.removeEventListener("resize", setVH);
     };
   }, []);
 
@@ -51,7 +53,7 @@ export default function WindowsXP() {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-[url('https://i.imgur.com/Zk6TR5k.jpg')] bg-cover overflow-hidden relative select-none font-[Tahoma,sans-serif]">
+    <div className="h-screen h-[calc(var(--vh,1vh)*100)] bg-[url('https://i.imgur.com/Zk6TR5k.jpg')] bg-cover overflow-hidden relative select-none font-[Tahoma,sans-serif] flex flex-col">
       <div className="flex-grow overflow-y-auto p-4 grid grid-cols-2 sm:grid-cols-1 md:grid-cols-1 gap-4 content-start">
         {windowsData.desktopIcons.map((icon) => (
           <DesktopIcon
@@ -69,7 +71,7 @@ export default function WindowsXP() {
             <div
               key={window.id}
               className={`absolute bg-gray-100 border border-gray-400 shadow-lg rounded-t-lg ${
-                isMobile ? "inset-0 mt-0 mb-10" : "w-[550px] h-[650px]"
+                isMobile ? "fixed inset-0 mt-0 mb-10" : "w-[550px] h-[650px]"
               }`}
               style={{
                 left: isMobile ? 0 : window.position.x,
@@ -132,7 +134,6 @@ export default function WindowsXP() {
       )}
 
       <div className="flex-shrink-0 h-10 bg-gradient-to-r from-[#245EDC] to-[#3C81F3] flex items-center justify-between z-50">
-        {/* <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-r from-[#245EDC] to-[#3C81F3] flex items-center justify-between z-50"> */}
         <div className="flex items-center h-full overflow-x-auto">
           <button
             className="px-0 py-0 flex-shrink-0"
