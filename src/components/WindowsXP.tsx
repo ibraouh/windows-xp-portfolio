@@ -133,7 +133,7 @@ export default function WindowsXP() {
                       src={
                         maximizedWindows[window.id]
                           ? "/img/buttons/restore.png"
-                          : "/img/buttons/maximize.png"
+                          : "/img/buttons/Maximize.png"
                       }
                       alt={maximizedWindows[window.id] ? "Restore" : "Maximize"}
                       className="h-6 w-6"
