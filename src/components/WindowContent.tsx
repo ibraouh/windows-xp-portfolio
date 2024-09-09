@@ -7,6 +7,7 @@ import Projects from "./source/Projects.js";
 import Resume from "./source/Resume.js";
 import SnakeGame from "./source/SnakeGame.tsx";
 import PaintGame from "./source/PaintGame.tsx";
+import Legal from "./source/legal.js";
 
 const WindowContent: React.FC<{ id: string }> = ({ id }) => {
   switch (id) {
@@ -22,8 +23,11 @@ const WindowContent: React.FC<{ id: string }> = ({ id }) => {
       return <Resume />;
     case "snake":
       return <SnakeGame />;
+    case "legal":
+      return <Legal />;
     case "paint":
       return <PaintGame />;
+
     default:
       return <div>Content not available</div>;
   }

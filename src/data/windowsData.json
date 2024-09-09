@@ -35,24 +35,5 @@
 			"title": "Paint",
 			"icon_id": "img/icons/paint.png"
 		}
-	],
-	"startMenuItems": [
-		{
-			"title": "My Profile",
-			"icon": "User"
-		},
-		{
-			"title": "Settings",
-			"icon": "Settings"
-		},
-		{
-			"title": "Help",
-			"icon": "HelpCircle"
-		},
-		{
-			"title": "Shut Down",
-			"icon": "Power",
-			"className": "text-red-600"
-		}
 	]
 }

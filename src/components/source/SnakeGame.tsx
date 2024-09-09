@@ -10,7 +10,7 @@ const Button: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = ({
 }) => (
   <button
     {...props}
-    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+    className="bg-[#0A246A] hover:bg-[#3A6EA5] text-white font-bold py-2 px-4 border-2 border-[#0A246A] focus:outline-none focus:shadow-outline"
   >
     {children}
   </button>
@@ -107,39 +107,47 @@ export default function SnakeGame() {
   }, [direction, food, gameOver, gameStarted, generateFood]);
 
   return (
-    <div className="w-full h-full bg-gray-900 p-4 flex flex-col items-center justify-center">
-      <div className="relative w-[400px] h-[400px] bg-gray-800 border-2 border-green-500">
-        {snake.map((segment, i) => (
+    <div className="w-full h-full bg-[#ECE9D8] p-4 flex flex-col items-center justify-center font-sans">
+      <h1 className="text-3xl font-bold mb-4 text-[#0A246A]">
+        Windows XP Snake
+      </h1>
+      <div className="relative w-[420px] h-[420px] bg-[#3A6EA5] p-2">
+        <div className="w-[400px] h-[400px] bg-[#AAD751] border-4 border-[#578A34] relative">
+          {snake.map((segment, i) => (
+            <div
+              key={i}
+              className="absolute w-[18px] h-[18px] bg-[#4A752C] border border-[#578A34]"
+              style={{
+                left: `${segment.x * CELL_SIZE}px`,
+                top: `${segment.y * CELL_SIZE}px`,
+              }}
+            />
+          ))}
           <div
-            key={i}
-            className="absolute w-[20px] h-[20px] bg-green-500"
+            className="absolute w-[18px] h-[18px] bg-[#E7471D] border border-[#AA2B0F]"
             style={{
-              left: `${segment.x * CELL_SIZE}px`,
-              top: `${segment.y * CELL_SIZE}px`,
+              left: `${food.x * CELL_SIZE}px`,
+              top: `${food.y * CELL_SIZE}px`,
             }}
           />
-        ))}
-        <div
-          className="absolute w-[20px] h-[20px] bg-red-500"
-          style={{
-            left: `${food.x * CELL_SIZE}px`,
-            top: `${food.y * CELL_SIZE}px`,
-          }}
-        />
+        </div>
       </div>
       {!gameStarted && !gameOver && (
-        <Button className="mt-4" onClick={resetGame}>
-          Start Game
-        </Button>
+        <div className="mt-4 text-center">
+          <p className="mb-2 text-[#0A246A]">
+            Use arrow keys to control the snake.
+          </p>
+          <Button onClick={resetGame}>Start Game</Button>
+        </div>
       )}
       {gameOver && (
-        <div className="text-white text-center mt-4">
+        <div className="text-[#0A246A] text-center mt-4">
           <p className="mb-2">Game Over!</p>
           <Button onClick={resetGame}>Restart Game</Button>
         </div>
       )}
       {gameStarted && !gameOver && (
-        <p className="text-white mt-2">Score: {snake.length - 1}</p>
+        <p className="text-[#0A246A] mt-2 text-xl">Score: {snake.length - 1}</p>
       )}
     </div>
   );
