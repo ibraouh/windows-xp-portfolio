@@ -17,23 +17,43 @@ export default function WindowsXP() {
   } = useWindowManager();
   const [startMenuOpen, setStartMenuOpen] = useState(false);
   const [time, setTime] = useState(new Date());
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => setTime(new Date()), 1000);
-    return () => clearInterval(timer);
+    const checkMobile = () => setIsMobile(window.innerWidth < 640);
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => {
+      clearInterval(timer);
+      window.removeEventListener("resize", checkMobile);
+    };
   }, []);
 
   useEffect(() => {
-    // Add overflow-hidden to body
     document.body.classList.add("overflow-hidden");
     return () => {
       document.body.classList.remove("overflow-hidden");
     };
   }, []);
 
+  const renderWindowContent = (window) => {
+    if (isMobile && (window.id === "snake" || window.id === "paint")) {
+      return (
+        <div className="p-4">
+          <p>This game can only be played on desktop and not mobile.</p>
+        </div>
+      );
+    }
+    return window.content;
+  };
+
   return (
     <div className="h-screen bg-[url('https://i.imgur.com/Zk6TR5k.jpg')] bg-cover overflow-hidden relative select-none font-[Tahoma,sans-serif]">
-      <div className="grid grid-rows-6 gap-4 p-4">
+      {/* <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-4 p-4 content-start h-[calc(100vh-40px)] overflow-y-auto"> */}
+      <div className="grid grid-cols-2 sm:grid-cols-1 md:grid-cols-1 gap-4 p-4 content-start h-full">
         {windowsData.desktopIcons.map((icon) => (
           <DesktopIcon
             key={icon.id}
@@ -49,19 +69,21 @@ export default function WindowsXP() {
           !window.isMinimized && (
             <div
               key={window.id}
-              className="absolute bg-gray-100 border border-gray-400 shadow-lg rounded-t-lg"
+              className={`absolute bg-gray-100 border border-gray-400 shadow-lg rounded-t-lg ${
+                isMobile ? "w-full h-[calc(100%-40px)]" : "w-[550px] h-[650px]"
+              }`}
               style={{
-                left: `${window.position.x}px`,
-                top: `${window.position.y}px`,
+                left: isMobile ? 0 : window.position.x,
+                top: isMobile ? 0 : window.position.y,
                 zIndex: window.zIndex,
-                width: "550px",
-                height: "650px",
               }}
             >
               <div
                 className="bg-gradient-to-r from-blue-700 to-blue-500 text-white p-1 flex justify-between items-center cursor-move rounded-t"
                 onMouseDown={(e) => {
-                  handleWindowDrag(e, window, moveWindow);
+                  if (!isMobile) {
+                    handleWindowDrag(e, window, moveWindow);
+                  }
                   activateWindow(window.id);
                 }}
               >
@@ -71,10 +93,8 @@ export default function WindowsXP() {
                     alt="icon"
                     className="mr-1 h-4 w-4 ml-1"
                   />
-
                   <span className="font-bold text-sm">{window.title}</span>
                 </div>
-
                 <div className="flex">
                   <button
                     className="px-1 py-0.5 hover:bg-[#1E6CEB] rounded"
@@ -82,54 +102,54 @@ export default function WindowsXP() {
                   >
                     <img
                       src={"/img/buttons/Minimize.png"}
-                      alt="Paint icon"
-                      className="mr-0 h-6 w-6"
+                      alt="Minimize"
+                      className="h-6 w-6"
                     />
                   </button>
-                  <button className="px-1 py-0.5 hover:bg-[#1E6CEB] text-white text-xs font-bold mr-0 rounded">
+                  <button className="px-1 py-0.5 hover:bg-[#1E6CEB] rounded">
                     <img
                       src={"/img/buttons/Maximize.png"}
-                      alt="Paint icon"
-                      className="mr-0 h-6 w-6"
+                      alt="Maximize"
+                      className="h-6 w-6"
                     />
                   </button>
                   <button
-                    className="px-1 py-0.5  hover:bg-[#E74856] text-white text-xs font-bold rounded"
+                    className="px-1 py-0.5 hover:bg-[#E74856] rounded"
                     onClick={() => closeWindow(window.id)}
                   >
                     <img
                       src={"/img/buttons/Exit.png"}
-                      alt="Paint icon"
-                      className="mr-0 h-6 w-6"
+                      alt="Close"
+                      className="h-6 w-6"
                     />
                   </button>
                 </div>
               </div>
               <div className="h-[calc(100%-28px)] overflow-auto">
-                {window.content}
+                {renderWindowContent(window)}
               </div>
             </div>
           )
       )}
 
       {/* Taskbar */}
-      <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-r from-[#245EDC] to-[#3C81F3] flex items-center justify-between">
-        <div className="flex items-center h-full">
+      <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-r from-[#245EDC] to-[#3C81F3] flex items-center justify-between z-50">
+        <div className="flex items-center h-full overflow-x-auto">
           <button
-            className="px-0 py-0"
+            className="px-0 py-0 flex-shrink-0"
             onClick={() => setStartMenuOpen(!startMenuOpen)}
           >
             <img
               src={"img/icons/logo.png"}
               alt="Windows XP Logo"
-              className="w-30 h-10 mr-0"
+              className="w-30 h-10"
             />
           </button>
-          <div className="flex space-x-1 ml-2 h-full items-center">
+          <div className="flex space-x-1 ml-2 h-full items-center overflow-x-auto">
             {windows.map((window) => (
               <button
                 key={window.id}
-                className={`h-8 px-2 py-1 text-white rounded flex items-center ${
+                className={`h-8 px-2 py-1 text-white rounded flex items-center flex-shrink-0 ${
                   activeWindow === window.id
                     ? "bg-[#1C3A80]"
                     : "bg-[#3C81F3] hover:bg-[#67A5F5]"
@@ -138,22 +158,24 @@ export default function WindowsXP() {
               >
                 <img
                   src={`/img/icons/${window.id}.png`}
-                  alt="Paint icon"
+                  alt={`${window.title} icon`}
                   className="mr-2 h-4 w-4"
                 />
-                <span className="text-sm">{window.title}</span>
+                <span className="text-sm whitespace-nowrap">
+                  {window.title}
+                </span>
               </button>
             ))}
           </div>
         </div>
-        <div className="shadow-xl border-l-2 border-gray-600 bg-[#0C9DF0] px-5 py-2.5  text-white text-sm mr-0">
+        <div className="shadow-xl border-l-2 border-gray-600 bg-[#0C9DF0] px-5 py-2.5 text-white text-sm flex-shrink-0">
           {time.toLocaleTimeString()}
         </div>
       </div>
 
       {/* Start Menu */}
       {startMenuOpen && (
-        <div className="absolute bottom-10 left-0 w-80 bg-[#D3E5FA] border-2 border-[#0A246A] rounded-tr-lg shadow-lg overflow-hidden">
+        <div className="absolute bottom-10 left-0 w-full sm:w-80 bg-[#D3E5FA] border-2 border-[#0A246A] rounded-tr-lg shadow-lg overflow-hidden z-50">
           <div className="bg-gradient-to-r from-[#1C3A80] to-[#3165C3] p-4 flex items-center">
             <img
               src="./img/icons/frog.jpg"
@@ -164,8 +186,8 @@ export default function WindowsXP() {
               Future Employer pls
             </div>
           </div>
-          <div className="flex">
-            <div className="w-3/5 p-2 space-y-1">
+          <div className="flex flex-col sm:flex-row">
+            <div className="w-full sm:w-3/5 p-2 space-y-1">
               <button
                 className="w-full text-left p-2 hover:bg-[#316AC5] hover:text-white rounded flex items-center"
                 onClick={() => {
@@ -175,12 +197,11 @@ export default function WindowsXP() {
               >
                 <img
                   src="/img/icons/about.png"
-                  alt="Search"
+                  alt="About Me"
                   className="w-7 h-7 mr-1.5"
                 />
                 <span className="text-sm">About Me</span>
               </button>
-
               <button
                 className="w-full text-left p-2 hover:bg-[#316AC5] hover:text-white rounded flex items-center"
                 onClick={() => {
@@ -190,7 +211,7 @@ export default function WindowsXP() {
               >
                 <img
                   src="/img/icons/resume.png"
-                  alt="Search"
+                  alt="Resume"
                   className="w-7 h-7 mr-1.5"
                 />
                 <span className="text-sm">Resume</span>
@@ -204,7 +225,7 @@ export default function WindowsXP() {
               >
                 <img
                   src="/img/icons/snake.png"
-                  alt="Search"
+                  alt="Snake"
                   className="w-7 h-7 mr-1.5"
                 />
                 <span className="text-sm">Snake</span>
@@ -218,13 +239,13 @@ export default function WindowsXP() {
               >
                 <img
                   src="/img/icons/paint.png"
-                  alt="Search"
+                  alt="Paint"
                   className="w-7 h-7 mr-1.5"
                 />
                 <span className="text-sm">Paint</span>
               </button>
             </div>
-            <div className="w-2/5 bg-[#9DBDE3] p-2 space-y-1">
+            <div className="w-full sm:w-2/5 bg-[#9DBDE3] p-2 space-y-1">
               <button className="w-full text-left p-2 hover:bg-[#316AC5] hover:text-white rounded flex items-center">
                 <img
                   src="/img/icons/myDocs.png"
@@ -287,7 +308,7 @@ export default function WindowsXP() {
               >
                 <img
                   src="/img/icons/power.png"
-                  alt="Log Off"
+                  alt="Turn Off"
                   className="w-7 h-7 mr-1.5"
                 />
                 <span className="text-sm">Turn Off</span>

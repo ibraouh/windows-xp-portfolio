@@ -1,8 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 
-const CANVAS_WIDTH = 800;
-const CANVAS_HEIGHT = 600;
-
+const CANVAS_WIDTH = 538;
+const CANVAS_HEIGHT = 507;
 const ColorButton: React.FC<{
   color: string;
   isSelected: boolean;
@@ -89,7 +88,7 @@ export default function WindowsXPPaint() {
   };
 
   return (
-    <div className="bg-[#ECE9D8] p-1 rounded-lg shadow-lg border-2 border-[#0054E3]">
+    <div className="bg-[#ECE9D8] p-1 -lg shadow-lg ">
       <div className="bg-[#F0F0F0] p-1 mb-1 flex items-center border border-[#919B9C]">
         <div className="flex flex-wrap mr-4">
           {colors.map((c) => (

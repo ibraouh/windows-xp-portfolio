@@ -1,13 +1,14 @@
 import React from "react";
 
-import About from "./source/About.tsx";
+import About from "./source/About.js";
 import Experience from "./source/Experience.js";
 import Research from "./source/Research.js";
 import Projects from "./source/Projects.js";
 import Resume from "./source/Resume.js";
-import SnakeGame from "./source/SnakeGame.tsx";
-import PaintGame from "./source/PaintGame.tsx";
 import Legal from "./source/legal.js";
+
+import SnakeGame from "./source/Games/SnakeGame.tsx";
+import PaintGame from "./source/Games/PaintGame.tsx";
 
 const WindowContent: React.FC<{ id: string }> = ({ id }) => {
   switch (id) {
