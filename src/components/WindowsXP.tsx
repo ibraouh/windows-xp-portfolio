@@ -35,6 +35,13 @@ export default function WindowsXP() {
     setVH();
     window.addEventListener("resize", setVH);
 
+    // Add meta viewport tag for iOS
+    const viewportMeta = document.createElement("meta");
+    viewportMeta.name = "viewport";
+    viewportMeta.content =
+      "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no";
+    document.getElementsByTagName("head")[0].appendChild(viewportMeta);
+
     return () => {
       clearInterval(timer);
       window.removeEventListener("resize", checkMobile);
@@ -61,7 +68,7 @@ export default function WindowsXP() {
   };
 
   return (
-    <div className="h-screen h-[calc(var(--vh,1vh)*100)] bg-[url('https://i.imgur.com/Zk6TR5k.jpg')] bg-cover overflow-hidden relative select-none font-[Tahoma,sans-serif] flex flex-col">
+    <div className="h-screen h-[calc(var(--vh,1vh)*100)] bg-[url('bliss.jpg')] bg-cover overflow-hidden relative select-none font-[Tahoma,sans-serif] flex flex-col">
       <div className="flex-grow overflow-y-auto p-4 grid grid-cols-2 sm:grid-cols-1 md:grid-cols-1 gap-4 content-start">
         {windowsData.desktopIcons.map((icon) => (
           <DesktopIcon
@@ -95,10 +102,17 @@ export default function WindowsXP() {
                     ? 0
                     : window.position.y,
                 zIndex: window.zIndex,
+                WebkitOverflowScrolling: "touch", // Enable momentum scrolling on iOS
               }}
             >
               <div
                 className="bg-gradient-to-r from-blue-700 to-blue-500 text-white p-1 flex justify-between items-center cursor-move rounded-t"
+                onTouchStart={(e) => {
+                  if (!isMobile && !maximizedWindows[window.id]) {
+                    handleWindowDrag(e, window, moveWindow);
+                  }
+                  activateWindow(window.id);
+                }}
                 onMouseDown={(e) => {
                   if (!isMobile && !maximizedWindows[window.id]) {
                     handleWindowDrag(e, window, moveWindow);
@@ -151,7 +165,7 @@ export default function WindowsXP() {
                   </button>
                 </div>
               </div>
-              <div className="h-[calc(100%-28px)] overflow-auto">
+              <div className="h-[calc(100%-28px)] overflow-auto -webkit-overflow-scrolling-touch">
                 {renderWindowContent(window)}
               </div>
             </div>
@@ -159,7 +173,7 @@ export default function WindowsXP() {
       )}
 
       <div className="flex-shrink-0 h-10 bg-gradient-to-r from-[#245EDC] to-[#3C81F3] flex items-center justify-between z-50">
-        <div className="flex items-center h-full overflow-x-auto">
+        <div className="flex items-center h-full overflow-x-auto -webkit-overflow-scrolling-touch">
           <button
             className="px-0 py-0 flex-shrink-0"
             onClick={() => setStartMenuOpen(!startMenuOpen)}
@@ -170,7 +184,7 @@ export default function WindowsXP() {
               className="w-30 h-10"
             />
           </button>
-          <div className="flex space-x-1 ml-2 h-full items-center overflow-x-auto">
+          <div className="flex space-x-1 ml-2 h-full items-center overflow-x-auto -webkit-overflow-scrolling-touch">
             {windows.map((window) => (
               <button
                 key={window.id}
@@ -202,13 +216,11 @@ export default function WindowsXP() {
         <div className="fixed bottom-10 left-0 w-full sm:w-80 bg-[#D3E5FA] border-2 border-[#0A246A] rounded-tr-lg shadow-lg overflow-hidden z-50">
           <div className="bg-gradient-to-r from-[#1C3A80] to-[#3165C3] p-4 flex items-center">
             <img
-              src="./img/icons/frog.jpg"
+              src="https://www.thispersondoesnotexist.com"
               alt="User"
               className="w-12 h-12 rounded border border-[#7AA5D7] mr-3 bg-black"
             />
-            <div className="text-white font-bold text-lg">
-              Future Employer pls
-            </div>
+            <div className="text-white font-bold text-lg">Future Employer</div>
           </div>
           <div className="flex flex-col sm:flex-row">
             <div className="w-full sm:w-3/5 p-2 space-y-1">

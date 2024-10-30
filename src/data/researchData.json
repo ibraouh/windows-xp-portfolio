@@ -3,17 +3,14 @@
 		"professor": "Professor Mao, Fordham University",
 		"title": "Quantum Computing, Deep Learning",
 		"details": [
-			"Developed a multi-tenant quantum simulator for quantum deep learning application on a classical computer with Python and TensorFlow",
-			"Employed Qiskit APIs to analyze the workload distribution across individual qubits, gaining valuable efficiency in performance and capability which reduces development time by 3+ hours (depending on specific IBM-Q Computer)",
-			"Utilized Docker, Git, and Agile Scrum process to facilitate and accelerate the development process within the team"
+			"As an Undergraduate Research Assistant for Professor Ying Mao at Fordham University, I developed a multi-tenant quantum simulator designed for quantum deep learning applications on a classical computer using Python and TensorFlow. My work involved employing Qiskit APIs to analyze workload distribution across individual qubits, which improved performance efficiency and reduced development time by over three hours, depending on the specific IBM-Q Computer used. I also utilized Docker, Git, and Agile Scrum methodologies to streamline and accelerate the development process within the research team, ensuring a collaborative and efficient workflow."
 		]
 	},
 	{
 		"professor": "Professor Li, Fordham University",
 		"title": "Image Segmentation Mathematical Algorithms and Models",
 		"details": [
-			"Implemented the iterative thresholding method for image segmentation using the Chan-Vese model in MATLAB and Python; incorporated convolution operations and region-specific information to enhance accuracy and achieve a 40% reduction in false positives",
-			"Utilized the results of the operation to accurately detect objects in an image at O(N logN) complexity"
+			"As a Graduate Research Assistant for Professor Wen Li at Fordham University, I implemented the iterative thresholding method for image segmentation using the Chan-Vese model in MATLAB and Python. My work focused on enhancing segmentation accuracy by incorporating convolution operations and leveraging region-specific information. This approach led to a 40% reduction in false positives, demonstrating significant improvements in the precision of image segmentation techniques."
 		]
 	}
 ]

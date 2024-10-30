@@ -12,6 +12,7 @@ const Projects = () => {
   return (
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-2">Some things I built</h1>
+      <h1>Disclaimer: This is still a work in progress</h1>
 
       <div className="p-3 pb-0" ref={scrollContainerRef}>
         {data.map((project, index) => (

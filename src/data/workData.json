@@ -1,33 +1,25 @@
 [
 	{
-		"date": "June 22 - August 22",
-		"position": "Software Engineer Intern",
+		"date": "January 24 - Present",
+		"position": "Junior Software Engineer",
+		"company": "MBO Partners",
+		"logo": "img/work/mbo.png",
+		"details": [
+			"As a Junior Software Engineer at MBO Partners, I collaborate closely with the engineering team to develop and maintain full-stack web applications, using React for the frontend, and Python for the backend.",
+			"I also play a big role in a major platform overhaul, developing in-house tools that enhance both functionality and user experience. ",
+			"Additionally, I lead the development and troubleshooting of a dynamic pricing tool, automating rate calculations and invoice generation while ensuring alignment with customized client guidelines."
+		]
+	},
+	{
+		"date": "June 22 - August 23",
+		"position": "SWE Intern",
 		"company": "Mobiblanc",
 		"logo": "img/work/mobiblanc.jpg",
 		"details": [
-			"Developed a modular artificial intelligence customer support bot using DialogFlow on Google Cloud, implemented on 7 webpages using HTML and JavaScript. Connected the user inquiries to two MySQL databases, one which the bot automatically uses to answer user questions, and the other to add new inquiries for the team to look at.",
-			"Decreased wait time by over 70% and reduced costs by 45%. Averaged 4700 daily interactions and 130 daily inquiries."
-		]
-	},
-	{
-		"date": "August 22 - Present",
-		"position": "Vice President",
-		"company": "Google Developer Student Club",
-		"logo": "img/work/gdsc.png",
-		"details": [
-			"Serving as VP at the Google Developers Student Club, I lead the planning and execution of initiatives, ensuring a robust and purposeful approach to our tech-focused endeavors.",
-			"From workshops to competitive coding events, I meticulously organize and execute activities, creating engaging experiences that contribute to the club's vibrant atmosphere."
-		]
-	},
-	{
-		"date": "September 21 - Present",
-		"position": "IT Specialist",
-		"company": "Fordham IT",
-		"logo": "img/work/fordham.png",
-		"details": [
-			"Part-time position at Fordham IT's help desk, in which I assist members of the Fordham community with any of their tech issues, either in person or remotely.",
-			"I've learned to troubleshoot the various problems from the different scenarios I encountered, strengthening my skills and understanding of how the backend works.",
-			"This position also required constant interactions with IT specialists, supervisors, and other employees from different departments, thus improving my communication skills."
+			"During my internship at Mobiblanc in Casablanca, Morocco, I developed a modular AI customer support bot using DialogFlow on Google Cloud. ",
+			"This bot was implemented across seven web pages using HTML and JavaScript, enabling efficient handling of user inquiries. ",
+			"I connected the bot to two MySQL databases: one that it used to automatically respond to user questions and another that captured new inquiries for the team to address. ",
+			"This solution improved operational efficiency by decreasing wait times by over 70% and reducing costs by 45% while managing an average of 4,700 daily interactions and processing 130 daily inquiries."
 		]
 	},
 	{
@@ -41,13 +33,24 @@
 		]
 	},
 	{
-		"date": "June 19 - July 19",
-		"position": "Agent and Technician",
-		"company": "Moroccan Motorway Company",
-		"logo": "img/work/adm.png",
+		"date": "August 22 - May 24",
+		"position": "Vice President",
+		"company": "Google Developer Student Club",
+		"logo": "img/work/gdsc.png",
 		"details": [
-			"During the month-long internship, I maintained the hardware and software used by the agents in over 12 national agencies.",
-			"The position required constant interactions with essential clients, appeasement of delicate situations between staff and clients, and a comfortable grasp of computer troubleshooting and hardware installations."
+			"Serving as VP at the Google Developers Student Club, I lead the planning and execution of initiatives, ensuring a robust and purposeful approach to our tech-focused endeavors.",
+			"From workshops to competitive coding events, I meticulously organize and execute activities, creating engaging experiences that contribute to the club's vibrant atmosphere."
+		]
+	},
+	{
+		"date": "September 21 - December 23",
+		"position": "IT Specialist",
+		"company": "Fordham IT",
+		"logo": "img/work/fordham_u.png",
+		"details": [
+			"Part-time position at Fordham IT's help desk, in which I assist members of the Fordham community with any of their tech issues, either in person or remotely.",
+			"I've learned to troubleshoot the various problems from the different scenarios I encountered, strengthening my skills and understanding of how the backend works.",
+			"This position also required constant interactions with IT specialists, supervisors, and other employees from different departments, thus improving my communication skills."
 		]
 	}
 ]

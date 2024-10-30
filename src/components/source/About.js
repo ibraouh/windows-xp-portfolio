@@ -10,21 +10,35 @@ const About = () => {
           <p className="italic mb-2">ML/AI Enthusiast</p>
 
           <p className="p-3 mb-3">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec
-            dapibus ante. Curabitur aliquet pharetra purus sed semper.
-            Vestibulum tincidunt, lacus vitae suscipit gravida, ligula magna
-            lobortis elit, in dapibus magna nulla vitae tellus. Phasellus vitae
-            semper magna. Integer fringilla ante massa, quis bibendum lorem
-            ultricies at. Pellentesque suscipit metus vitae ipsum aliquam
-            vulputate. Vestibulum eget sodales risus. Phasellus accumsan
-            placerat mi, sit amet sagittis sapien congue eu. Suspendisse
-            pharetra sollicitudin enim, pretium condimentum velit pellentesque
-            at. Aliquam quis consequat turpis, et vestibulum enim. Quisque sed
-            diam orci. Integer sodales libero eget nulla eleifend, a accumsan
-            purus hendrerit. Praesent at volutpat orci. Etiam ullamcorper libero
-            fringilla ligula consequat vulputate. Sed vitae rhoncus lorem. Class
-            aptent taciti sociosqu ad litora torquent per conubia nostra, per
-            inceptos himenaeos.
+            <li>
+              I'm a passionate Junior Software Engineer with a strong foundation
+              in computer science and a focus on artificial intelligence. I’m
+              currently pursuing a Master’s in Computer Science at Fordham
+              University, with an expected graduation in 2025.{" "}
+            </li>
+            <br></br>
+            <li>
+              My work at MBO Partners involves building and optimizing
+              full-stack applications, where I handle both frontend development
+              with React and backend functionality with Python. I’ve also
+              spearheaded projects like an automated pricing tool to enhance
+              client solutions. With hands-on experience in AI-driven projects,
+              including a customer support bot that reduced wait times by over
+              70% and cut costs by nearly half, I thrive in roles where I can
+              combine technical expertise with practical, impactful solutions.{" "}
+            </li>
+            <br></br>
+            <li>
+              I enjoy collaborative, fast-paced environments where I can
+              leverage my skills in Python, C++, AWS, and Docker, among others.
+              Beyond my professional endeavors, I’m an active leader in the tech
+              community as a former Vice-President of the Google Developers
+              Student Club and as Fordham’s Computer Science Society Research
+              Director. My goal is to contribute innovative ideas and solutions
+              to meaningful projects that push the boundaries of technology.{" "}
+            </li>
+            <br></br>
+            Let’s connect to explore how I can bring value to your team!
           </p>
         </div>
         <div className="md:w-1/3 flex justify-center md:justify-end items-start">
