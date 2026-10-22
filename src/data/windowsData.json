@@ -3,37 +3,62 @@
 		{
 			"id": "about",
 			"title": "About Me",
-			"icon_id": "img/icons/about.png"
+			"icon_id": "img/icons/about.png",
+			"description": "Who I am and what I do"
 		},
 		{
 			"id": "resume",
 			"title": "Resume",
-			"icon_id": "img/icons/resume.png"
+			"icon_id": "img/icons/resume.png",
+			"description": "My links and résumé"
 		},
 		{
 			"id": "experience",
 			"title": "Experience",
-			"icon_id": "img/icons/work.png"
+			"icon_id": "img/icons/experience.png",
+			"description": "Where I've worked"
+		},
+		{
+			"id": "education",
+			"title": "Education",
+			"icon_id": "img/icons/education.png",
+			"description": "Penn and Fordham"
 		},
 		{
 			"id": "research",
 			"title": "Research",
-			"icon_id": "img/icons/research.png"
+			"icon_id": "img/icons/research.png",
+			"description": "Research and grad school deep dives"
 		},
 		{
 			"id": "projects",
 			"title": "Projects",
-			"icon_id": "img/icons/project.png"
+			"icon_id": "img/icons/projects.png",
+			"description": "Things I've built"
 		},
 		{
 			"id": "snake",
 			"title": "Snake",
-			"icon_id": "img/icons/snake.png"
+			"icon_id": "img/icons/snake.png",
+			"description": "Play Snake"
 		},
 		{
 			"id": "paint",
 			"title": "Paint",
-			"icon_id": "img/icons/paint.png"
+			"icon_id": "img/icons/paint.png",
+			"description": "Draw something"
+		},
+		{
+			"id": "minesweeper",
+			"title": "Minesweeper",
+			"icon_id": "img/icons/minesweeper.png",
+			"description": "Classic Minesweeper"
 		}
-	]
+	],
+	"recycleBin": {
+		"id": "recycle",
+		"title": "Recycle Bin",
+		"icon_id": "img/icons/recycle.png",
+		"description": "Old portfolio versions"
+	}
 }

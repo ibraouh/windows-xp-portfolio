@@ -6,7 +6,7 @@ const Resume = () => {
         href="https://www.linkedin.com/in/iraouh/"
         target="_blank"
         rel="noopener noreferrer"
-        className="w-full p-3 bg-blue-200 border border-gray-400 rounded-lg shadow text-center text-gray-800 font-bold hover:bg-blue-300 transition duration-200"
+        className="xp-button w-full py-2 text-[13px] text-center"
       >
         LinkedIn
       </a>
@@ -16,34 +16,34 @@ const Resume = () => {
         href="https://github.com/ibraouh"
         target="_blank"
         rel="noopener noreferrer"
-        className="w-full p-3 bg-blue-200 border border-gray-400 rounded-lg shadow text-center text-gray-800 font-bold hover:bg-blue-300 transition duration-200"
+        className="xp-button w-full py-2 text-[13px] text-center"
       >
         GitHub
       </a>
 
-      {/* Button 4: Instagram */}
-      <a
-        href="https://www.instagram.com/ibraouh/"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="w-full p-3 bg-blue-200 border border-gray-400 rounded-lg shadow text-center text-gray-800 font-bold hover:bg-blue-300 transition duration-200"
-      >
-        Instagram
-      </a>
-
-      {/* Button 5: Email */}
+      {/* Button 4: Email */}
       <a
         href="mailto:abe@raouh.com"
         target="_blank"
         rel="noopener noreferrer"
-        className="w-full p-3 bg-blue-200 border border-gray-400 rounded-lg shadow text-center text-gray-800 font-bold hover:bg-blue-300 transition duration-200"
+        className="xp-button w-full py-2 text-[13px] text-center"
       >
         abe@raouh.com
       </a>
 
+      {/* Button 5: Instagram */}
+      <a
+        href="https://www.instagram.com/ibraouh/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="xp-button w-full py-2 text-[13px] text-center"
+      >
+        Instagram
+      </a>
+
       {/* Button 1: Image and Google Drive Resume Request */}
       <a
-        className="flex flex-col items-center p-3 bg-blue-200 border border-gray-400 rounded-lg shadow hover:bg-blue-300 transition duration-200"
+        className="xp-button w-full flex flex-col items-center py-3"
         href="https://drive.google.com/file/d/1JZ4QWna4dWGHsYditAzsORfMpXNSPOBt/view?usp=sharing"
         target="_blank"
         rel="noopener noreferrer"
@@ -54,7 +54,7 @@ const Resume = () => {
           className="h-12 w-12 mb-2"
         />
 
-        <span className="font-bold text-gray-800">
+        <span className="text-[13px]">
           Request Resume on Google Drive
         </span>
       </a>

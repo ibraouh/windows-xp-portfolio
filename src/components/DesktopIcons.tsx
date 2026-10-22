@@ -1,23 +1,76 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 interface DesktopIconProps {
   icon: string;
   title: string;
-  onClick: () => void;
+  description?: string;
+  selected: boolean;
+  isMobile: boolean;
+  onSelect: () => void;
+  onOpen: () => void;
 }
 
-const DesktopIcon: React.FC<DesktopIconProps> = ({ icon, title, onClick }) => (
-  <div
-    className="flex flex-col items-center text-white cursor-pointer w-20 sm:w-24 md:w-28"
-    onClick={onClick}
-  >
-    <div className="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center rounded">
-      <img src={icon} alt={title} className="w-10 h-10 sm:w-14 sm:h-14" />
+// XP desktop icons: one click selects, a double click opens.
+// On phones a single tap opens, since double taps zoom instead.
+const DesktopIcon: React.FC<DesktopIconProps> = ({
+  icon,
+  title,
+  description,
+  selected,
+  isMobile,
+  onSelect,
+  onOpen,
+}) => {
+  const [showTooltip, setShowTooltip] = useState(false);
+  const timer = useRef<ReturnType<typeof setTimeout>>();
+
+  useEffect(() => () => clearTimeout(timer.current), []);
+
+  const hideTooltip = () => {
+    clearTimeout(timer.current);
+    setShowTooltip(false);
+  };
+
+  return (
+    <div
+      className={`xp-desktop-icon relative flex flex-col items-center cursor-default ${
+        selected ? "selected" : ""
+      }`}
+      onMouseDown={(e) => {
+        e.stopPropagation();
+        hideTooltip();
+        if (!isMobile) onSelect();
+      }}
+      onClick={() => {
+        if (isMobile) onOpen();
+      }}
+      onDoubleClick={() => {
+        if (!isMobile) onOpen();
+      }}
+      onMouseEnter={() => {
+        if (description && !isMobile) {
+          timer.current = setTimeout(() => setShowTooltip(true), 700);
+        }
+      }}
+      onMouseLeave={hideTooltip}
+    >
+      <div className="xp-icon-box relative">
+        <img src={icon} alt={title} className="w-full h-full" draggable={false} />
+        <span
+          className="xp-icon-tint"
+          style={{ WebkitMaskImage: `url(${icon})`, maskImage: `url(${icon})` }}
+        />
+      </div>
+      <span className="xp-desktop-label">
+        {title}
+      </span>
+      {showTooltip && (
+        <div className="xp-tooltip absolute left-[55%] top-[79%] z-30">
+          {description}
+        </div>
+      )}
     </div>
-    <span className="mt-1 text-xs sm:text-sm text-center leading-tight shadow-sm">
-      {title}
-    </span>
-  </div>
-);
+  );
+};
 
 export default DesktopIcon;

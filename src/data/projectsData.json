@@ -1,18 +1,76 @@
 [
 	{
-		"title": "Fordham PD",
-		"image": "img/projects/proj1.png",
-		"description": "Fordham People Watcher (naming is not my strongest skill) is a device that detects the capacity of a room using a Raspberry Pi and multiple detectors like motion, humidity, and temperature. The readings are then posted to a website that students can use.",
+		"title": "A11y Tools",
+		"image": "img/projects/a11y-tools.png",
+		"subtitle": "3rd place, ShellHacks 2025",
+		"description": "A Chrome extension that makes the web easier to use if you can't see it well, read it easily, or use a mouse. Voice navigation, AI-generated alt text, a dyslexia-friendly font, and filling out Google Forms with nothing but your voice. A teammate and I built it in one hackathon weekend and took 3rd place in the Google Cloud Challenge.",
 		"technologies": [
-			"Hardware",
-			"Raspberry Pi",
-			"C++"
+			"Google ADK",
+			"Gemini",
+			"FastAPI",
+			"JavaScript",
+			"Web Audio"
+		]
+	},
+	{
+		"title": "Job Application Tracker",
+		"image": "img/projects/job-tracker.png",
+		"subtitle": "jobs.raouh.com",
+		"link": "https://jobs.raouh.com",
+		"description": "Job hunting is a full-time job, so I gave it a dashboard. Paste a posting link and GPT fills in the details, then my résumé-scoring API (keywords, TF-IDF and SBERT embeddings) tells you how well you match, out of 100.",
+		"technologies": [
+			"React",
+			"Firebase",
+			"OpenAI",
+			"SBERT",
+			"Python"
+		]
+	},
+	{
+		"title": "Daily Compass",
+		"image": "img/projects/daily-compass.png",
+		"description": "I'm training for the NYC Marathon and my health data lived in five different apps, so I spent a day pulling it into one. Apple Health flows in automatically, dashboards show the trends, and a Claude chat answers questions by querying the data itself. \"How's my recovery trending this week?\" now has an actual answer.",
+		"technologies": [
+			"Next.js",
+			"Claude",
+			"Vercel AI SDK",
+			"Postgres"
+		]
+	},
+	{
+		"title": "Border Booth",
+		"image": "img/projects/border-booth.png",
+		"description": "A border-checkpoint game inspired by Papers, Please, with one twist: every traveler at the booth is an LLM, and you can actually talk to them. Each one gets a randomized character and personality, so no two shifts play out the same. Keeping them in character without spilling what they're hiding was the fun part.",
+		"technologies": [
+			"Claude",
+			"Game design",
+			"Guardrails"
+		]
+	},
+	{
+		"title": "Clarity",
+		"image": "img/projects/clarity.png",
+		"description": "A thinking workspace for big decisions, designed to push back instead of agreeing with everything you say. Most AI is a yes-man. This one isn't.",
+		"technologies": [
+			"Claude",
+			"LLM UX"
+		]
+	},
+	{
+		"title": "Invasion Shooter",
+		"image": "img/projects/invasion-shooter.png",
+		"subtitle": "2019",
+		"early": true,
+		"description": "A Unity space shooter that won first national prize in SupInfo's game-development competition. I was 16 and pitched it in French.",
+		"technologies": [
+			"Unity"
 		]
 	},
 	{
 		"title": "D.A.I.S.Y.",
 		"image": "img/projects/proj2.png",
-		"description": "Daisy was my main summer project and my first experience with AI. the name DAISY stands for Developed Artificial Intelligence Yett (Again, names not that good). It is an AI bot that answers questions. I built the Text recognition algorithm and the capability to scrape the web and find answers.",
+		"early": true,
+		"description": "My first AI project, from before ChatGPT was a thing. It's a voice assistant: you ask out loud, it turns your speech into text, searches the web, scrapes the top results in parallel, picks the passage closest to your question using vector similarity, and reads the answer back to you. It stands for Developed Artificial Intelligence System Yett. Again, naming is not my strongest skill.",
 		"technologies": [
 			"Python",
 			"C++",
@@ -22,20 +80,32 @@
 	{
 		"title": "Fighting Robot",
 		"image": "img/projects/proj3.png",
-		"description": "I had a phase last summer where I wanted to create a fighting robot; no questions, please. This is why I made a mockup for a 3D printed fighting robot that used only 4 motors and was controlled with a controller. Sadly, the project came to an end when it fell off the table.",
+		"early": true,
+		"description": "A 3D-printed robot with four motors and a controller. No questions, please. The project ended when it fell off the table. Fun first project to learn some hardware basics.",
 		"technologies": [
 			"Hardware",
 			"Python"
 		]
 	},
 	{
-		"title": "Portfolio Website",
-		"image": "img/projects/proj4.png",
-		"description": "This website, Ta-Da! It is built using HTML, CSS, and JS. I've created this website portfolio after long nights of figuring out text-align and how to center a div. I've deepened my knowledge of the 3 languages and Git in the process.",
+		"title": "Fordham PD",
+		"image": "img/projects/proj1.png",
+		"early": true,
+		"description": "A Raspberry Pi that estimated how full a room was from motion, humidity and temperature sensors, then posted it to a website for students. PD stands for People Detector. I know.",
 		"technologies": [
-			"HTML",
-			"CSS",
-			"JavaScript"
+			"Hardware",
+			"Raspberry Pi",
+			"C++"
+		]
+	},
+	{
+		"title": "Abe's XP",
+		"image": "img/projects/proj4.png",
+		"early": true,
+		"description": "This site, version six of my portfolio. Windows XP was the first OS I ever used, so it felt right. Built with React and Tailwind, and yes, Snake works.",
+		"technologies": [
+			"React",
+			"Tailwind"
 		]
 	}
 ]

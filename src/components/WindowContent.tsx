@@ -5,10 +5,14 @@ import Experience from "./source/Experience.js";
 import Research from "./source/Research.js";
 import Projects from "./source/Projects.js";
 import Resume from "./source/Resume.js";
+import Education from "./source/Education.js";
+import SiteInfo from "./source/SiteInfo.js";
 import Legal from "./source/legal.js";
 
 import SnakeGame from "./source/Games/SnakeGame.tsx";
 import PaintGame from "./source/Games/PaintGame.tsx";
+import MinesweeperGame from "./source/Games/MinesweeperGame.tsx";
+import RecycleBin from "./source/RecycleBin.js";
 
 const WindowContent: React.FC<{ id: string }> = ({ id }) => {
   switch (id) {
@@ -22,12 +26,20 @@ const WindowContent: React.FC<{ id: string }> = ({ id }) => {
       return <Projects />;
     case "resume":
       return <Resume />;
+    case "education":
+      return <Education />;
+    case "control":
+      return <SiteInfo />;
     case "snake":
       return <SnakeGame />;
     case "legal":
       return <Legal />;
     case "paint":
       return <PaintGame />;
+    case "minesweeper":
+      return <MinesweeperGame />;
+    case "recycle":
+      return <RecycleBin />;
 
     default:
       return <div>Content not available</div>;

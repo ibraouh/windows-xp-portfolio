@@ -1,0 +1,44 @@
+[
+	{
+		"name": "windows_vista_setup.exe",
+		"icon": "setup",
+		"comments": "Never installing this.",
+		"deleted": "2007",
+		"size": "1.2 GB"
+	},
+	{
+		"name": "portfolio_v1.html",
+		"icon": "html",
+		"comments": "My first portfolio, in plain HTML and CSS.",
+		"deleted": "2020",
+		"size": "12 KB"
+	},
+	{
+		"name": "portfolio_v2-v4.zip",
+		"icon": "zip",
+		"comments": "Three more static versions, built during college.",
+		"deleted": "2021 - 2023",
+		"size": "3.1 MB"
+	},
+	{
+		"name": "portfolio_react.html",
+		"icon": "html",
+		"comments": "My first React version, hosted on GitHub Pages.",
+		"deleted": "2024",
+		"size": "1.4 MB"
+	},
+	{
+		"name": "portfolio_v5.html",
+		"icon": "html",
+		"comments": "React again, this time with an animated cat.",
+		"deleted": "Sep 2024",
+		"size": "2.2 MB"
+	},
+	{
+		"name": "fighting_robot.stl",
+		"icon": "file",
+		"comments": "The 3D model for my first hardware project.",
+		"deleted": "2020",
+		"size": "3.2 MB"
+	}
+]

@@ -1,7 +1,7 @@
 const Legal = () => {
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Legal Notice</h1>
+      <h1 className="xp-heading text-xl mb-4">Legal Notice</h1>
       <p>
         This website is a personal portfolio created for recreational use and to
         pay homage to Windows XP, the first operating system I ever used. It is

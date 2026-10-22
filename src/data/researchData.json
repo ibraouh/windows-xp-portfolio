@@ -1,16 +1,23 @@
 [
 	{
-		"professor": "Professor Mao, Fordham University",
-		"title": "Quantum Computing, Deep Learning",
+		"professor": "Penn · Fall 2026",
+		"title": "GPU Computing",
 		"details": [
-			"As an Undergraduate Research Assistant for Professor Ying Mao at Fordham University, I developed a multi-tenant quantum simulator designed for quantum deep learning applications on a classical computer using Python and TensorFlow. My work involved employing Qiskit APIs to analyze workload distribution across individual qubits, which improved performance efficiency and reduced development time by over three hours, depending on the specific IBM-Q Computer used. I also utilized Docker, Git, and Agile Scrum methodologies to streamline and accelerate the development process within the research team, ensuring a collaborative and efficient workflow."
+			"Wrote CUDA kernels that hit speedups of up to 774x on matrix multiplication. I also built an autograd tensor library from scratch in CUDA C++: a tiny PyTorch, minus the years of work."
 		]
 	},
 	{
-		"professor": "Professor Li, Fordham University",
-		"title": "Image Segmentation Mathematical Algorithms and Models",
+		"professor": "Prof. Ying Mao, Fordham · 2022 - 2023",
+		"title": "Quantum Computing",
 		"details": [
-			"As a Graduate Research Assistant for Professor Wen Li at Fordham University, I implemented the iterative thresholding method for image segmentation using the Chan-Vese model in MATLAB and Python. My work focused on enhancing segmentation accuracy by incorporating convolution operations and leveraging region-specific information. This approach led to a 40% reduction in false positives, demonstrating significant improvements in the precision of image segmentation techniques."
+			"Helped build a multi-tenant quantum simulator that lets several users share qubits on classical hardware. I wrote the Qiskit tooling that measured workload per qubit and proposed Kubernetes-based scheduling for a shared quantum cluster."
+		]
+	},
+	{
+		"professor": "Prof. Wen Li, Fordham · Summer 2023",
+		"title": "Image Segmentation",
+		"details": [
+			"Implemented iterative thresholding for the Chan-Vese segmentation model in MATLAB and Python, adding convolution and region-specific information. False positives dropped by 40%."
 		]
 	}
 ]

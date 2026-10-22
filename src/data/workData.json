@@ -1,56 +1,50 @@
 [
 	{
-		"date": "January 24 - Present",
-		"position": "Junior Software Engineer",
+		"date": "Jun 2025 - Present",
+		"position": "AI Engineer · Engineering Lead, AI for Private Equity",
+		"company": "Exadel",
+		"logo": "img/work/exadel.png",
+		"details": [
+			"I lead engineering for Exadel's AI practice for private equity: architecture, development, quality, and the technical calls. I'm embedded with a global PE firm's deal teams and leadership, and Exadel sells what we build there to other PE firms.",
+			"I wrote the engineering standards the team builds by: how we use AI coding tools, how we write and review code, how we collect requirements, and how we work with stakeholders. I also interview our AI engineer and FDE candidates, and I designed Exadel's first AI Advisory Lab, where ~20 mostly non-technical consultants built working prototypes with Claude Code in 75 minutes.",
+			"**Cascades:** drafts investment-committee memos straight from a deal's data room, with every claim traced back to its source document. It takes a first draft from ~4 weeks to a few hours. (Claude Agent SDK, Postgres, Azure)",
+			"**Appalachia:** turns messy, unstructured financial files into structured data and weekly, monthly and quarterly reports across 28 portfolio companies. That's 2,000+ reports a year nobody writes by hand anymore, plus a growing base of structured data the system keeps learning from.",
+			"Built a redaction tool for investor tax documents (K-1s, 1042-S, capital calls) so fund accounting can safely use AI on them. Every redaction is deterministic, with no external API calls.",
+			"Built an agent that learns how the firm's leaders think from their meeting transcripts, so deal teams hear leadership's questions before the IC meeting instead of during it.",
+			"**Project Portfolio Platform:** took it from idea to MVP in about two months, then to full production two months later. It cut project documentation from a month to 2 to 3 days (20 to 40 hours saved per document) and is now the standard process across Exadel's delivery engineering org, thousands of engineers strong."
+		]
+	},
+	{
+		"date": "Jan 2024 - May 2025",
+		"position": "Software Engineer",
 		"company": "MBO Partners",
 		"logo": "img/work/mbo.png",
 		"details": [
-			"As a Junior Software Engineer at MBO Partners, I collaborate closely with the engineering team to develop and maintain full-stack web applications, using React for the frontend, and Python for the backend.",
-			"I also play a big role in a major platform overhaul, developing in-house tools that enhance both functionality and user experience. ",
-			"Additionally, I lead the development and troubleshooting of a dynamic pricing tool, automating rate calculations and invoice generation while ensuring alignment with customized client guidelines."
+			"Built a thread-safe logging and observability system for accounts-receivable invoicing. Recovery from invoice failures went from 74 minutes to under 60 seconds on a $40M-a-year integration.",
+			"Worked on the MBO and PwC API integration: real-time updates over Solace, New Relic dashboards, and the NRQL queries and runbooks the team used to hunt down bad records.",
+			"Led a dynamic pricing tool that automates rate calculations and invoice generation around each client's rules."
 		]
 	},
 	{
-		"date": "June 22 - August 23",
-		"position": "SWE Intern",
+		"date": "Summer 2022 · Casablanca",
+		"position": "Software Engineering Intern",
 		"company": "Mobiblanc",
 		"logo": "img/work/mobiblanc.jpg",
 		"details": [
-			"During my internship at Mobiblanc in Casablanca, Morocco, I developed a modular AI customer support bot using DialogFlow on Google Cloud. ",
-			"This bot was implemented across seven web pages using HTML and JavaScript, enabling efficient handling of user inquiries. ",
-			"I connected the bot to two MySQL databases: one that it used to automatically respond to user questions and another that captured new inquiries for the team to address. ",
-			"This solution improved operational efficiency by decreasing wait times by over 70% and reducing costs by 45% while managing an average of 4,700 daily interactions and processing 130 daily inquiries."
+			"Built a customer-support bot on Dialogflow, live on seven web pages and wired to two MySQL databases: one to answer questions, one to log new ones for the team.",
+			"It handled ~4,700 conversations a day and cut wait times by 70% and support costs by 45%. It was my first time watching real users talk to something I built."
 		]
 	},
 	{
-		"date": "September 21 - August 22",
-		"position": "Research Director",
-		"company": "Fordham Computer Science Society",
-		"logo": "img/work/css.png",
-		"details": [
-			"In 2020, I was elected Research Director of the Fordham Computer Science Society. I was in charge of most of the weekly tech events organized by the Eboard, and researching the topics discussed.",
-			"I was also in charge of keeping track of the club's inventory and leading a year-long research project."
-		]
-	},
-	{
-		"date": "August 22 - May 24",
-		"position": "Vice President",
-		"company": "Google Developer Student Club",
-		"logo": "img/work/gdsc.png",
-		"details": [
-			"Serving as VP at the Google Developers Student Club, I lead the planning and execution of initiatives, ensuring a robust and purposeful approach to our tech-focused endeavors.",
-			"From workshops to competitive coding events, I meticulously organize and execute activities, creating engaging experiences that contribute to the club's vibrant atmosphere."
-		]
-	},
-	{
-		"date": "September 21 - December 23",
-		"position": "IT Specialist",
-		"company": "Fordham IT",
+		"date": "2021 - 2025",
+		"position": "Leadership & campus roles",
+		"company": "Fordham University",
 		"logo": "img/work/fordham_u.png",
 		"details": [
-			"Part-time position at Fordham IT's help desk, in which I assist members of the Fordham community with any of their tech issues, either in person or remotely.",
-			"I've learned to troubleshoot the various problems from the different scenarios I encountered, strengthening my skills and understanding of how the backend works.",
-			"This position also required constant interactions with IT specialists, supervisors, and other employees from different departments, thus improving my communication skills."
+			"Resident Assistant for three years, which is basically client support with a 2 AM SLA.",
+			"Co-founder and VP of the Google Developer Student Club: workshops and competitive coding events.",
+			"Research Director of the Computer Science Society: ran the weekly tech talks and a year-long research project.",
+			"IT Service Desk (2021 to 2024), where I learned to explain tech to people who don't care how it works, just that it works."
 		]
 	}
 ]
