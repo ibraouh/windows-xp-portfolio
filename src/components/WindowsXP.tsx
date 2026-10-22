@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../fonts/fonts.css";
 import DesktopIcon from "./DesktopIcons.tsx";
 import Window from "./Window.tsx";
@@ -6,7 +6,7 @@ import Taskbar from "./Taskbar.tsx";
 import StartMenu from "./StartMenu.tsx";
 import ContextMenu from "./ContextMenu.tsx";
 import ShutdownScreen from "./ShutdownScreen.tsx";
-import { useWindowManager, TASKBAR_HEIGHT } from "../hooks/useWindowManager.tsx";
+import { useWindowManager } from "../hooks/useWindowManager.tsx";
 import windowsData from "../data/windowsData.json";
 
 const ICONS_PER_COLUMN = 6;
@@ -15,8 +15,7 @@ const MIN_CELL = 72;
 
 // Desktop icons fill columns of six, top to bottom. On short screens the
 // icons shrink to keep six per column, and only below MIN_CELL do columns get shorter.
-const getDesktopLayout = () => {
-  const available = window.innerHeight - TASKBAR_HEIGHT - 8;
+const getDesktopLayout = (available: number) => {
   const cell = Math.max(MIN_CELL, Math.min(MAX_CELL, Math.floor(available / ICONS_PER_COLUMN)));
   const rows = Math.max(1, Math.min(ICONS_PER_COLUMN, Math.floor(available / cell)));
   return { cell, rows };
@@ -43,48 +42,35 @@ export default function WindowsXP() {
   const [selectedIcon, setSelectedIcon] = useState<string | null>(null);
   const [contextMenu, setContextMenu] = useState<{ x: number; y: number } | null>(null);
   const [refreshing, setRefreshing] = useState(false);
-  const [desktopLayout, setDesktopLayout] = useState(getDesktopLayout);
+  const [desktopLayout, setDesktopLayout] = useState(() =>
+    getDesktopLayout(window.innerHeight - 50)
+  );
+  const desktopRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 640);
-      setDesktopLayout(getDesktopLayout());
-    };
+    const checkMobile = () => setIsMobile(window.innerWidth < 640);
 
     checkMobile();
     window.addEventListener("resize", checkMobile);
-
-    function setVH() {
-      let vh = window.innerHeight * 0.01;
-      document.documentElement.style.setProperty("--vh", `${vh}px`);
-    }
-
-    setVH();
-    window.addEventListener("resize", setVH);
-
-    // Add meta viewport tag for iOS
-    const viewportMeta = document.createElement("meta");
-    viewportMeta.name = "viewport";
-    viewportMeta.content =
-      "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no";
-    document.getElementsByTagName("head")[0].appendChild(viewportMeta);
-
-    return () => {
-      window.removeEventListener("resize", checkMobile);
-      window.removeEventListener("resize", setVH);
-    };
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  const renderWindowContent = (window) => {
-    if (isMobile && (window.id === "snake" || window.id === "paint")) {
-      return (
-        <div className="p-4">
-          <p>Snake and Paint need a mouse and keyboard. Catch them on a laptop.</p>
-        </div>
-      );
-    }
-    return window.content;
-  };
+  // Size the icon grid from the space the desktop really has, which accounts
+  // for the taskbar, iOS toolbars and safe areas.
+  useEffect(() => {
+    const desktop = desktopRef.current;
+    if (!desktop) return;
+    const measure = () => {
+      const { paddingTop, paddingBottom } = getComputedStyle(desktop);
+      const available =
+        desktop.clientHeight - parseFloat(paddingTop) - parseFloat(paddingBottom);
+      setDesktopLayout(getDesktopLayout(available));
+    };
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(desktop);
+    return () => observer.disconnect();
+  }, []);
 
   const toggleMaximize = (windowId) => {
     setMaximizedWindows((prev) => ({
@@ -107,12 +93,13 @@ export default function WindowsXP() {
 
   return (
     <div
-      className="xp-font h-screen h-[calc(var(--vh,1vh)*100)] bg-[url('bliss.jpg')] bg-cover overflow-hidden relative select-none flex flex-col"
+      className="xp-root xp-font bg-[url('bliss.jpg')] bg-cover overflow-hidden relative select-none flex flex-col"
       style={{ "--xp-cell": `${desktopLayout.cell}px` } as React.CSSProperties}
       onMouseDown={() => setContextMenu(null)}
     >
       <div
-        className="flex-grow min-h-0 p-1 grid grid-flow-col content-start justify-start"
+        ref={desktopRef}
+        className="flex-grow min-h-0 p-1 pt-[calc(4px+env(safe-area-inset-top))] grid grid-flow-col content-start justify-start"
         style={{
           gridTemplateRows: `repeat(${desktopLayout.rows}, ${desktopLayout.cell}px)`,
           gridAutoColumns: `${desktopLayout.cell}px`,
@@ -144,7 +131,7 @@ export default function WindowsXP() {
           ))}
       </div>
 
-      <div className="absolute right-1 bottom-[42px]">
+      <div className="absolute right-1 bottom-[calc(42px+env(safe-area-inset-bottom))]">
         <DesktopIcon
           icon={windowsData.recycleBin.icon_id}
           title={windowsData.recycleBin.title}
@@ -177,7 +164,7 @@ export default function WindowsXP() {
               onMove={moveWindow}
               onResize={resizeWindow}
             >
-              {renderWindowContent(window)}
+              {window.content}
             </Window>
           )
       )}

@@ -87,7 +87,9 @@ const Window: React.FC<WindowProps> = ({
   return (
     <div
       className={`xp-window ${isActive ? "" : "inactive"} ${
-        fillsScreen ? "maximized fixed inset-0 bottom-[38px]" : "absolute"
+        fillsScreen
+          ? "maximized fixed inset-x-0 top-[env(safe-area-inset-top)] bottom-[calc(38px+env(safe-area-inset-bottom))]"
+          : "absolute"
       }`}
       style={
         fillsScreen

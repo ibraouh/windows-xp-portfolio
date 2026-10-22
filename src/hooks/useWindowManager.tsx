@@ -9,7 +9,10 @@ export const MIN_WINDOW_SIZE = { width: 220, height: 160 };
 
 // Windows that fit their content open at their own size.
 const DEFAULT_SIZES: Record<string, { width: number; height: number }> = {
-  minesweeper: { width: 236, height: 352 },
+  // Touch screens get bigger Minesweeper cells, so a bigger window
+  minesweeper: window.matchMedia("(pointer: coarse)").matches
+    ? { width: 344, height: 470 }
+    : { width: 236, height: 352 },
   snake: { width: 480, height: 600 },
   recycle: { width: 640, height: 360 },
   control: { width: 520, height: 420 },

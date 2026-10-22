@@ -1,8 +1,12 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 
 const ROWS = 9;
 const COLS = 9;
 const MINES = 10;
+// Bigger cells for fingers, and long-press stands in for right-click on touch screens
+const IS_TOUCH = window.matchMedia("(pointer: coarse)").matches;
+const CELL = IS_TOUCH ? 32 : 20;
+const LONG_PRESS_MS = 400;
 
 type Cell = { mine: boolean; adjacent: number; revealed: boolean; flagged: boolean };
 type Status = "ready" | "playing" | "won" | "lost";
@@ -144,6 +148,8 @@ export default function MinesweeperGame() {
   const [time, setTime] = useState(0);
   const [pressing, setPressing] = useState(false);
   const [exploded, setExploded] = useState<number | null>(null);
+  const pressTimer = useRef<ReturnType<typeof setTimeout>>();
+  const longPressed = useRef(false);
 
   useEffect(() => {
     if (status !== "playing") return;
@@ -234,7 +240,7 @@ export default function MinesweeperGame() {
 
         <div
           className={`grid ${sunken}`}
-          style={{ gridTemplateColumns: `repeat(${COLS}, 20px)` }}
+          style={{ gridTemplateColumns: `repeat(${COLS}, ${CELL}px)` }}
           onMouseLeave={() => setPressing(false)}
         >
           {board.map((cell, i) => {
@@ -243,20 +249,41 @@ export default function MinesweeperGame() {
             return (
               <button
                 key={i}
-                className={`w-5 h-5 flex items-center justify-center font-bold text-[13px] leading-none ${
+                className={`flex items-center justify-center font-bold leading-none [-webkit-touch-callout:none] ${
                   cell.revealed
                     ? `border-l border-t border-[#808080] ${i === exploded ? "bg-[#ff0000]" : "bg-[#c0c0c0]"}`
                     : `bg-[#c0c0c0] ${raised}`
                 }`}
-                style={{ color: showNumber ? NUMBER_COLORS[cell.adjacent] : undefined }}
+                style={{
+                  width: CELL,
+                  height: CELL,
+                  fontSize: IS_TOUCH ? 18 : 13,
+                  color: showNumber ? NUMBER_COLORS[cell.adjacent] : undefined,
+                }}
                 onMouseDown={(e) => {
                   if (e.button === 0 && status !== "won" && status !== "lost") setPressing(true);
                 }}
                 onMouseUp={() => setPressing(false)}
-                onClick={() => reveal(i)}
+                onTouchStart={() => {
+                  longPressed.current = false;
+                  pressTimer.current = setTimeout(() => {
+                    longPressed.current = true;
+                    toggleFlag(i);
+                  }, LONG_PRESS_MS);
+                }}
+                onTouchMove={() => clearTimeout(pressTimer.current)}
+                onTouchEnd={() => clearTimeout(pressTimer.current)}
+                onClick={() => {
+                  if (longPressed.current) {
+                    longPressed.current = false;
+                    return;
+                  }
+                  reveal(i);
+                }}
                 onContextMenu={(e) => {
                   e.preventDefault();
-                  toggleFlag(i);
+                  // On touch screens the long-press timer already flagged it
+                  if (!IS_TOUCH) toggleFlag(i);
                 }}
               >
                 {cell.revealed && cell.mine ? (

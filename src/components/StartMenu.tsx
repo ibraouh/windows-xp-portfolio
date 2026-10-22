@@ -24,7 +24,7 @@ const StartMenu: React.FC<StartMenuProps> = ({ onOpen, onLogOff, onTurnOff }) =>
   const [allProgramsOpen, setAllProgramsOpen] = useState(false);
 
   return (
-    <div className="xp-start-menu fixed bottom-[38px] left-0 w-full sm:w-[420px] z-50">
+    <div className="xp-start-menu fixed bottom-[calc(38px+env(safe-area-inset-bottom))] left-0 w-full sm:w-[420px] z-50">
       <div className="xp-start-header">
         <img
           src="https://thispersondoesnotexist.com/random-person.jpeg"

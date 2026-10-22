@@ -2,20 +2,20 @@
 	{
 		"school": "University of Pennsylvania",
 		"logo": "img/work/penn.png",
-		"degree": "MSE in Artificial Intelligence",
+		"degree": "Master of Science in Engineering in Artificial Intelligence",
 		"date": "2025 - May 2027 · GPA 4.0",
 		"details": "Courses so far: Artificial Intelligence and NLP with Chris Callison-Burch, GPU Computing, Big Data Analytics, Statistics for Data Science, Networked Systems, and Technology Ethics & the Law."
 	},
 	{
 		"school": "Fordham University",
 		"logo": "img/work/fordham_u.png",
-		"degree": "MS in Computer Science",
+		"degree": "Master of Science in Computer Science",
 		"date": "2025 · GPA 3.75"
 	},
 	{
 		"school": "Fordham University",
 		"logo": "img/work/fordham_u.png",
-		"degree": "BS in Mathematics & Computer Science, magna cum laude",
+		"degree": "Bachelor of Science in Mathematics & Computer Science, magna cum laude",
 		"date": "2024 · GPA 3.72"
 	}
 ]

@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 
+// Largest canvas; it shrinks to fit small windows and phones
 const CANVAS_WIDTH = 560;
 const CANVAS_HEIGHT = 420;
 
@@ -115,9 +116,10 @@ const drawLine = (
 };
 
 const floodFill = (ctx: CanvasRenderingContext2D, startX: number, startY: number, hex: string) => {
-  const image = ctx.getImageData(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+  const { width, height } = ctx.canvas;
+  const image = ctx.getImageData(0, 0, width, height);
   const px = image.data;
-  const at = (x: number, y: number) => (y * CANVAS_WIDTH + x) * 4;
+  const at = (x: number, y: number) => (y * width + x) * 4;
   const start = at(startX, startY);
   const target = [px[start], px[start + 1], px[start + 2], px[start + 3]];
   const [r, g, b] = hexToRgb(hex);
@@ -126,7 +128,7 @@ const floodFill = (ctx: CanvasRenderingContext2D, startX: number, startY: number
   const stack = [[startX, startY]];
   while (stack.length) {
     const [x, y] = stack.pop()!;
-    if (x < 0 || y < 0 || x >= CANVAS_WIDTH || y >= CANVAS_HEIGHT) continue;
+    if (x < 0 || y < 0 || x >= width || y >= height) continue;
     const i = at(x, y);
     if (px[i] !== target[0] || px[i + 1] !== target[1] || px[i + 2] !== target[2] || px[i + 3] !== target[3]) continue;
     px[i] = r;
@@ -140,6 +142,8 @@ const floodFill = (ctx: CanvasRenderingContext2D, startX: number, startY: number
 
 export default function WindowsXPPaint() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const workspaceRef = useRef<HTMLDivElement>(null);
+  const [canvasSize, setCanvasSize] = useState<{ width: number; height: number } | null>(null);
   const strokeRef = useRef<{ color: string; last: { x: number; y: number } } | null>(null);
   const [tool, setTool] = useState<Tool>("pencil");
   const [previousTool, setPreviousTool] = useState<Tool>("pencil");
@@ -154,17 +158,28 @@ export default function WindowsXPPaint() {
     const ctx = getContext();
     if (ctx) {
       ctx.fillStyle = "#ffffff";
-      ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+      ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     }
   };
 
-  useEffect(clearCanvas, []);
+  // Pick the canvas size once, from the room the workspace has when Paint opens
+  useEffect(() => {
+    const workspace = workspaceRef.current;
+    if (!workspace) return;
+    setCanvasSize({
+      width: Math.max(200, Math.min(CANVAS_WIDTH, workspace.clientWidth - 12)),
+      height: Math.max(150, Math.min(CANVAS_HEIGHT, workspace.clientHeight - 12)),
+    });
+  }, []);
 
-  const pointFrom = (e: React.MouseEvent<HTMLCanvasElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
+  useEffect(clearCanvas, [canvasSize]);
+
+  const pointFrom = (e: React.PointerEvent<HTMLCanvasElement>) => {
+    const canvas = e.currentTarget;
+    const rect = canvas.getBoundingClientRect();
     return {
-      x: Math.max(0, Math.min(CANVAS_WIDTH - 1, Math.floor(e.clientX - rect.left))),
-      y: Math.max(0, Math.min(CANVAS_HEIGHT - 1, Math.floor(e.clientY - rect.top))),
+      x: Math.max(0, Math.min(canvas.width - 1, Math.floor(e.clientX - rect.left))),
+      y: Math.max(0, Math.min(canvas.height - 1, Math.floor(e.clientY - rect.top))),
     };
   };
 
@@ -175,10 +190,12 @@ export default function WindowsXPPaint() {
 
   const size = tool === "brush" ? sizes.brush : tool === "eraser" ? sizes.eraser : 1;
 
-  const handleMouseDown = (e: React.MouseEvent<HTMLCanvasElement>) => {
+  const handlePointerDown = (e: React.PointerEvent<HTMLCanvasElement>) => {
     if (e.button !== 0 && e.button !== 2) return;
     const ctx = getContext();
     if (!ctx) return;
+    // Keep receiving the stroke even if the pointer leaves the canvas
+    e.currentTarget.setPointerCapture(e.pointerId);
     const point = pointFrom(e);
     const isRight = e.button === 2;
 
@@ -200,7 +217,7 @@ export default function WindowsXPPaint() {
     strokeRef.current = { color, last: point };
   };
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLCanvasElement>) => {
+  const handlePointerMove = (e: React.PointerEvent<HTMLCanvasElement>) => {
     const point = pointFrom(e);
     setCursor(point);
     const stroke = strokeRef.current;
@@ -262,21 +279,21 @@ export default function WindowsXPPaint() {
         </div>
 
         {/* Workspace */}
-        <div className="flex-grow min-w-0 overflow-auto bg-[#808080] p-1">
-          <canvas
-            ref={canvasRef}
-            width={CANVAS_WIDTH}
-            height={CANVAS_HEIGHT}
-            onMouseDown={handleMouseDown}
-            onMouseMove={handleMouseMove}
-            onMouseUp={endStroke}
-            onMouseLeave={() => {
-              endStroke();
-              setCursor(null);
-            }}
-            onContextMenu={(e) => e.preventDefault()}
-            className="block bg-white shadow-[2px_2px_0_#404040] cursor-crosshair"
-          />
+        <div ref={workspaceRef} className="flex-grow min-w-0 overflow-auto bg-[#808080] p-1">
+          {canvasSize && (
+            <canvas
+              ref={canvasRef}
+              width={canvasSize.width}
+              height={canvasSize.height}
+              onPointerDown={handlePointerDown}
+              onPointerMove={handlePointerMove}
+              onPointerUp={endStroke}
+              onPointerCancel={endStroke}
+              onPointerLeave={() => setCursor(null)}
+              onContextMenu={(e) => e.preventDefault()}
+              className="block bg-white shadow-[2px_2px_0_#404040] cursor-crosshair touch-none"
+            />
+          )}
         </div>
       </div>
 

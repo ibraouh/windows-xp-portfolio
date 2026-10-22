@@ -7,6 +7,12 @@ html {
   font-size: 110%;
 }
 
+/* Sky blue from the top of Bliss, so iOS bars and overscroll areas match */
+html,
+body {
+  background: #4479ea;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -14,6 +20,14 @@ body {
   position: fixed;
   width: 100%;
   height: 100%;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Full height that follows iOS Safari's toolbars as they show and hide */
+.xp-root {
+  height: 100vh;
+  height: 100dvh;
 }
 
 @layer utilities {
@@ -154,6 +168,16 @@ body {
   }
   .xp-window.inactive .xp-tb-btn {
     opacity: 0.6;
+  }
+  /* Bigger title bar and buttons for fingers */
+  @media (max-width: 639px) {
+    .xp-titlebar {
+      height: 38px;
+    }
+    .xp-tb-btn {
+      width: 30px;
+      height: 30px;
+    }
   }
 
   /* Menu bar under the title bar */
@@ -397,13 +421,18 @@ body {
     mask-position: center;
   }
 
-  /* Taskbar */
+  /* Taskbar: sits above the iPhone home indicator, its color filling the gap below */
   .xp-taskbar {
+    box-sizing: content-box;
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 38px;
-    background: linear-gradient(
+    padding-bottom: env(safe-area-inset-bottom);
+    background-color: #1941a5;
+    background-repeat: no-repeat;
+    background-size: 100% 38px;
+    background-image: linear-gradient(
       to bottom,
       #1f2f86 0%,
       #3165c4 3%,
